@@ -19,7 +19,7 @@ int main() {
   size_t len = 0;
   ssize_t nread;
 
-  stream = fopen("./day_01.txt", "r");
+  stream = fopen("./inputfiles/day_01.txt", "r");
 
   if (stream == NULL) {
     perror("fopen");
