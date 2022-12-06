@@ -18,7 +18,11 @@ char pop(STACK *col) {
   }
 
   char result = col->head->box;
+
+  NODE *temp = col->head;
   col->head = col->head->next;
+
+  free(temp);
 
   return result;
 }
@@ -113,6 +117,7 @@ int main() {
         perror("failed to allocate memory");
         exit(EXIT_FAILURE);
       }
+      ship_two_stack_in_motion->head = NULL;
 
       for (int i = 0; i < num_to_move; i++) {
         char item_ship_one = pop(&ship_first[start_box - 1]);
@@ -130,6 +135,7 @@ int main() {
         char item_to_move = pop(ship_two_stack_in_motion);
         push(&ship_second[end_box - 1], item_to_move);
       }
+      free(ship_two_stack_in_motion);
     }
 
     curr_line++;
@@ -148,5 +154,8 @@ int main() {
   }
   printf("\n");
 
+  free(line);
+  free(ship_first);
+  free(ship_second);
   return EXIT_SUCCESS;
 }
