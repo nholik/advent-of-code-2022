@@ -154,6 +154,7 @@ int main() {
   }
   printf("\n");
 
+  fclose(stream);
   free(line);
   free(ship_first);
   free(ship_second);
